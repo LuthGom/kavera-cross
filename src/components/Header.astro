@@ -7,7 +7,7 @@ import { Menu } from "lucide-react";
   <div>
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center py-3 md:py-4">
+        <div class="flex justify-between items-center py-3 md:py-4" id="logo">
           {/* Logo */}
           <div class="flex items-center">
             <img
@@ -22,7 +22,7 @@ import { Menu } from "lucide-react";
           </div>
 
           {/* Desktop Menu */}
-          <nav class="hidden md:flex items-center space-x-8">
+          <nav class="hidden md:flex items-center space-x-8" id="desktop-menu">
             <a
               href="#unidades"
               class="text-gray-800 hover:text-blue-600 transition-colors"
@@ -44,13 +44,14 @@ import { Menu } from "lucide-react";
           </nav>
           <button
             class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            id="mobile-menu-button"
           >
-            <Menu />
+            <Menu id="menu-icon" />
           </button>
         </div>
 
-        <div class="md:hidden py-4 border-t border-gray-200">
-          <nav class="flex flex-col space-y-3">
+        <div class="hidden py-4 border-t border-gray-200" id="mobile-menu">
+          <nav class="flex flex-col space-y-3" id="nav-menu-mobile">
             <a
               href="#unidades"
               class="text-gray-800 hover:text-blue-600 transition-colors py-2 px-2 rounded-lg hover:bg-gray-50"
@@ -74,7 +75,53 @@ import { Menu } from "lucide-react";
       </div>
     </header>
   </div>
-  <script>
-    import "../scripts/menu.js";
+  <script defer>
+    // Elementos do DOM
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const desktopMenu = document.getElementById("desktop-menu");
+    const mobileMenuLinks = document.querySelectorAll(".mobile-menu-link");
+    const logo = document.getElementById("logo");
+    const navMenuMobile = document.getElementById("nav-menu-mobile");
+
+    // Variável para controlar o estado do menu
+    let isMenuOpen = false;
+
+    // Função para alternar o menu
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen) {
+        mobileMenu?.classList.remove("hidden");
+        menuIcon?.classList.add("hidden");
+        logo.style.display = "flex";
+        logo.style.flexDirection = "column";
+        logo.style.justifyContent = "center";
+        navMenuMobile.style.width = "100%";
+        navMenuMobile.style.alignItems = "center";
+        navMenuMobile.style.display = "flex";
+        navMenuMobile.style.alignContent = "center";
+        desktopMenu?.classList.remove("invisible");
+      } else {
+        mobileMenu?.classList.add("hidden");
+        menuIcon?.classList.remove("hidden");
+
+        desktopMenu?.classList.add("invisible");
+      }
+    }
+
+    // Adicionar evento de clique ao botão do menu
+    mobileMenuButton?.addEventListener("click", toggleMenu);
+
+    // Adicionar eventos de clique aos links do menu móvel
+    mobileMenuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        // Fechar o menu quando um link for clicado
+        if (isMenuOpen) {
+          toggleMenu();
+        }
+      });
+    });
   </script>
 </header>
