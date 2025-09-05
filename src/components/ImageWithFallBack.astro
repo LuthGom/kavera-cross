@@ -1,0 +1,81 @@
+---
+// Define a imagem de fallback em base64
+const ERROR_IMG_SRC =
+  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==';
+
+// Define a interface de props do componente
+interface Props extends astroHTML.JSX.ImgHTMLAttributes {
+  src: string;
+  alt: string;
+  className?: string;
+  style?: Record<string, string> | string;
+}
+
+// Extrai as props
+const { src, alt, className = '', style, ...rest } = Astro.props;
+
+// Gera um ID único para este componente
+const uniqueId = `img-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<!-- Renderiza a imagem com um ID único para referência no script -->
+<img 
+  id={uniqueId}
+  src={src} 
+  alt={alt} 
+  class={className} 
+  style={typeof style === 'object' ? Object.entries(style).map(([k, v]) => `${k}:${v}`).join(';') : style}
+  {...rest}
+/>
+
+<script define:vars={{ uniqueId, ERROR_IMG_SRC, src }}>
+  // Obtém a referência para a imagem
+  const img = document.getElementById(uniqueId);
+  
+  if (img) {
+    // Adiciona o manipulador de erro
+    img.onerror = function() {
+      // Obtém os atributos da imagem original
+      const originalAlt = this.alt;
+      const originalClassName = this.className;
+      const originalStyle = this.style.cssText;
+      const originalAttributes = {};
+      
+      // Copia todos os atributos personalizados
+      Array.from(this.attributes).forEach(attr => {
+        if (!['src', 'alt', 'class', 'style', 'id', 'onerror'].includes(attr.name)) {
+          originalAttributes[attr.name] = attr.value;
+        }
+      });
+      
+      // Cria o contêiner de fallback
+      const fallbackContainer = document.createElement('div');
+      fallbackContainer.className = `inline-block bg-gray-100 text-center align-middle ${originalClassName}`;
+      fallbackContainer.style.cssText = originalStyle;
+      
+      // Cria o contêiner interno para centralizar
+      const innerContainer = document.createElement('div');
+      innerContainer.className = 'flex items-center justify-center w-full h-full';
+      
+      // Cria a imagem de erro
+      const errorImg = document.createElement('img');
+      errorImg.src = ERROR_IMG_SRC;
+      errorImg.alt = "Error loading image";
+      errorImg.dataset.originalUrl = src;
+      
+      // Aplica os atributos originais à imagem de erro
+      for (const [key, value] of Object.entries(originalAttributes)) {
+        errorImg.setAttribute(key, value);
+      }
+      
+      // Monta a estrutura
+      innerContainer.appendChild(errorImg);
+      fallbackContainer.appendChild(innerContainer);
+      
+      // Substitui a imagem original pelo fallback
+      if (this.parentNode) {
+        this.parentNode.replaceChild(fallbackContainer, this);
+      }
+    };
+  }
+</script>

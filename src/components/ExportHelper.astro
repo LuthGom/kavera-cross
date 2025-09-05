@@ -1,0 +1,171 @@
+---
+// Definindo os dados para instruções de download
+const downloadInstructions = [
+  {
+    format: "PNG/JPG",
+    icon: "image",
+    description: "Imagens estáticas do layout",
+    methods: [
+      "F12 → Device Toolbar → Capture screenshot",
+      "Extensions: Full Page Screen Capture, GoFullPage",
+      "Online: Webpage Screenshot, Screenshot API"
+    ]
+  },
+  {
+    format: "PDF",
+    icon: "file-text",
+    description: "Documento completo do site",
+    methods: [
+      "Ctrl+P → Salvar como PDF",
+      "Print Friendly & PDF extension",
+      "wkhtmltopdf online tools"
+    ]
+  },
+  {
+    format: "HTML/CSS",
+    icon: "code",
+    description: "Código fonte completo",
+    methods: [
+      "Ctrl+S → Salvar página completa",
+      "View Source → Copy/Save",
+      "Wget ou curl para download completo"
+    ]
+  }
+];
+
+// Definindo os viewports
+const viewports = [
+  { name: "Desktop", icon: "monitor", width: "1440px" },
+  { name: "Tablet", icon: "monitor", width: "768px" },
+  { name: "Mobile", icon: "smartphone", width: "375px" }
+];
+
+// Função para renderizar ícones
+function renderIcon(iconName: string, className: string = "w-5 h-5") {
+  switch (iconName) {
+    case "image":
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`;
+    case "file-text":
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`;
+    case "code":
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`;
+    case "monitor":
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`;
+    case "smartphone":
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`;
+    case "download":
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`;
+    default:
+      return '';
+  }
+}
+---
+
+<div class="max-w-4xl mx-auto p-6 space-y-8">
+  <div class="text-center">
+    <h1 class="text-3xl font-bold mb-2">Guia de Exportação - Academia Kavera Cross</h1>
+    <p class="text-gray-600">Baixe seu layout em diferentes formatos e resoluções</p>
+  </div>
+
+  <!-- Formatos Disponíveis -->
+  <div class="grid gap-6 md:grid-cols-3">
+    {downloadInstructions.map((item) => (
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <Fragment set:html={renderIcon(item.icon)} />
+          <h3 class="text-lg font-semibold">{item.format}</h3>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">{item.description}</p>
+        <div class="space-y-2">
+          <h4 class="text-sm font-medium">Métodos:</h4>
+          <ul class="space-y-1">
+            {item.methods.map((method) => (
+              <li class="text-xs text-gray-500">• {method}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Resoluções Recomendadas -->
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+      <Fragment set:html={renderIcon("download")} />
+      Resoluções Recomendadas
+    </h3>
+    <div class="grid gap-4 md:grid-cols-3">
+      {viewports.map((viewport) => (
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+          <Fragment set:html={renderIcon(viewport.icon, "w-4 h-4")} />
+          <div>
+            <div class="font-medium">{viewport.name}</div>
+            <div class="text-sm text-gray-600">{viewport.width}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Instruções Detalhadas -->
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h3 class="text-lg font-semibold mb-4">Instruções Detalhadas</h3>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h4 class="font-medium text-blue-600">Para PNG/JPG (Recomendado):</h4>
+        <ol class="list-decimal list-inside mt-2 space-y-1 text-gray-600">
+          <li>Abra o site no navegador</li>
+          <li>Pressione F12 para abrir as ferramentas de desenvolvedor</li>
+          <li>Clique no ícone de dispositivo móvel (📱) na toolbar</li>
+          <li>Escolha a resolução desejada (1440px para desktop, 375px para mobile)</li>
+          <li>Clique nos 3 pontos (⋮) → "Capture screenshot"</li>
+        </ol>
+      </div>
+      
+      <div>
+        <h4 class="font-medium text-blue-600">Para PDF:</h4>
+        <ol class="list-decimal list-inside mt-2 space-y-1 text-gray-600">
+          <li>Pressione Ctrl+P (Windows) ou Cmd+P (Mac)</li>
+          <li>Escolha "Salvar como PDF" no destino</li>
+          <li>Ajuste as configurações (A4, retrato/paisagem)</li>
+          <li>Clique em "Salvar"</li>
+        </ol>
+      </div>
+
+      <div>
+        <h4 class="font-medium text-blue-600">Para Código HTML/CSS:</h4>
+        <ol class="list-decimal list-inside mt-2 space-y-1 text-gray-600">
+          <li>Clique com o botão direito na página</li>
+          <li>Selecione "Salvar como..."</li>
+          <li>Escolha "Página da Web, completa" no tipo de arquivo</li>
+          <li>Salve (incluirá HTML, CSS, imagens e scripts)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ferramentas Online Recomendadas -->
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h3 class="text-lg font-semibold mb-4">Ferramentas Online Úteis</h3>
+    <div class="grid gap-4 md:grid-cols-2">
+      <div>
+        <h4 class="font-medium">Para Screenshots:</h4>
+        <ul class="text-sm text-gray-600 space-y-1 mt-2">
+          <li>• Webpage Screenshot (online)</li>
+          <li>• Screenshot API</li>
+          <li>• Full Page Screen Capture (extensão)</li>
+          <li>• GoFullPage (extensão)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-medium">Para PDF:</h4>
+        <ul class="text-sm text-gray-600 space-y-1 mt-2">
+          <li>• Print Friendly & PDF</li>
+          <li>• HTML to PDF online</li>
+          <li>• PDFShift API</li>
+          <li>• wkhtmltopdf</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

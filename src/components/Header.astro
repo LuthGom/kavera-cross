@@ -1,0 +1,80 @@
+---
+import logoImage from "../../public/assets/b9a40bccd5aa597a041fe97afc9fd65e9f8d63d7.png";
+import { Menu } from "lucide-react";
+---
+
+<header>
+  <div>
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-3 md:py-4">
+          {/* Logo */}
+          <div class="flex items-center">
+            <img
+              src={logoImage.src}
+              alt="Kavera Cross Logo"
+              class="w-8 h-8 md:w-10 md:h-10 mr-2 md:mr-3 object-contain"
+            />
+            <div class="text-lg md:text-2xl text-black kavera-logo">
+              <span class="font-900">Kavera</span>
+              <span class="ml-1 md:ml-2 text-blue-900">Cross</span>
+            </div>
+          </div>
+
+          {/* Desktop Menu */}
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="#unidades"
+              class="text-gray-800 hover:text-blue-600 transition-colors"
+            >
+              Unidades
+            </a>
+            <a
+              href="#planos"
+              class="text-gray-800 hover:text-blue-600 transition-colors"
+            >
+              Planos
+            </a>
+            <a
+              href="#sobre"
+              class="text-gray-800 hover:text-blue-600 transition-colors"
+            >
+              Sobre Nós
+            </a>
+          </nav>
+          <button
+            class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <Menu />
+          </button>
+        </div>
+
+        <div class="md:hidden py-4 border-t border-gray-200">
+          <nav class="flex flex-col space-y-3">
+            <a
+              href="#unidades"
+              class="text-gray-800 hover:text-blue-600 transition-colors py-2 px-2 rounded-lg hover:bg-gray-50"
+            >
+              Unidades
+            </a>
+            <a
+              href="#planos"
+              class="text-gray-800 hover:text-blue-600 transition-colors py-2 px-2 rounded-lg hover:bg-gray-50"
+            >
+              Planos
+            </a>
+            <a
+              href="#sobre"
+              class="text-gray-800 hover:text-blue-600 transition-colors py-2 px-2 rounded-lg hover:bg-gray-50"
+            >
+              Sobre Nós
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+  </div>
+  <script>
+    import "../scripts/menu.js";
+  </script>
+</header>
