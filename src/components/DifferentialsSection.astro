@@ -1,28 +1,33 @@
 ---
 import ImageWithFallback from "./ImageWithFallBack.astro";
-
+import parana from "../../public/assets/parana.jpeg";
+import catalao from "../../public/assets/catalao.jpeg";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
 // Definindo os diferenciais
 const differentials = [
   {
     icon: "dumbbell",
     title: "Equipamentos de Última Geração",
-    description: "Máquinas modernas e bem conservadas para um treino eficiente e seguro"
+    description:
+      "Máquinas modernas e bem conservadas para um treino eficiente e seguro",
   },
   {
     icon: "clock",
     title: "Horários Flexíveis",
-    description: "Funcionamento 24h no Plano Plus, adapte-se à sua rotina"
+    description:
+      "Funcionamento todos os dias para você montar sua rotina da melhor forma.",
   },
   {
     icon: "users",
     title: "Profissionais Qualificados",
-    description: "Equipe especializada para orientar e acompanhar sua evolução"
+    description: "Equipe especializada para orientar e acompanhar sua evolução",
   },
   {
     icon: "shield",
     title: "Ambiente Seguro",
-    description: "Protocolos de segurança e limpeza rigorosos para seu bem-estar"
-  }
+    description:
+      "Protocolos de segurança e limpeza rigorosos para seu bem-estar",
+  },
 ];
 
 // Definindo as imagens da galeria
@@ -30,9 +35,27 @@ const galleryImages = [
   "https://images.unsplash.com/photo-1610456756490-0f7069c202d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxneW0lMjBlcXVpcG1lbnQlMjB3b3Jrb3V0fGVufDF8fHx8MTc1NjExMTQxNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   "https://images.unsplash.com/photo-1721394747060-7cfc57104f88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwY2VudGVyJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzU2MTYyMDM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   "https://images.unsplash.com/photo-1602827114685-efbb2717da9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZW9wbGUlMjB0cmFpbmluZyUyMGd5bSUyMGJsYWNrJTIwd2hpdGV8ZW58MXx8fHwxNzU2MTYyMDM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1639511205270-2b1ce5b112c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcm9zc2ZpdCUyMHRyYWluaW5nfGVufDF8fHx8MTc1NjE2MjAzNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  "https://images.unsplash.com/photo-1639511205270-2b1ce5b112c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcm9zc2ZpdCUyMHRyYWluaW5nfGVufDF8fHx8MTc1NjE2MjAzNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
 ];
 
+const unidades = [
+  {
+    img: parana,
+    nome: "Unidade Paraná",
+    whatsApp: "(37)999285790",
+    instagram: "kaveracross",
+    email: "kaveramusculacao01@gmail.com",
+    wppLink: "https://wa.link/97g5ou",
+  },
+  {
+    img: catalao,
+    nome: "Unidade Catalão",
+    whatsApp: "(37)99964-2473",
+    instagram: "kaveracrosscatalao",
+    email: "kaveracatalao@gmail.com",
+    wppLink: "https://wa.link/vo8cau",
+  },
+];
 // Função para renderizar o ícone correto
 function getIcon(iconName: string) {
   switch (iconName) {
@@ -45,7 +68,7 @@ function getIcon(iconName: string) {
     case "shield":
       return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`;
     default:
-      return '';
+      return "";
   }
 }
 ---
@@ -56,37 +79,97 @@ function getIcon(iconName: string) {
       <h2 class="text-2xl sm:text-3xl md:text-4xl text-black mb-3 md:mb-4">
         Por que a <span class="text-blue-600">Kavera</span> é diferente?
       </h2>
-      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
-        Nossa infraestrutura e metodologia foram pensadas para oferecer a melhor experiência fitness
+      <p
+        class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0"
+      >
+        Nossa infraestrutura e metodologia foram pensadas para oferecer a melhor
+        experiência fitness
       </p>
     </div>
 
     <!-- Diferenciais -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16">
-      {differentials.map((item, index) => (
-        <div class="text-center px-2">
-          <div class="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-blue-600 text-white rounded-full mb-3 md:mb-4">
-            <Fragment set:html={getIcon(item.icon)} />
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16"
+    >
+      {
+        differentials.map((item, index) => (
+          <div class="text-center px-2">
+            <div class="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-blue-600 text-white rounded-full mb-3 md:mb-4">
+              <Fragment set:html={getIcon(item.icon)} />
+            </div>
+            <h3 class="text-lg md:text-xl text-black mb-2">{item.title}</h3>
+            <p class="text-sm md:text-base text-gray-600">{item.description}</p>
           </div>
-          <h3 class="text-lg md:text-xl text-black mb-2">{item.title}</h3>
-          <p class="text-sm md:text-base text-gray-600">{item.description}</p>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <!-- Galeria -->
     <div>
-      <h3 class="text-xl md:text-2xl text-black text-center mb-6 md:mb-8">Nossa Infraestrutura</h3>
+      <h3 class="text-xl md:text-2xl text-black text-center mb-6 md:mb-8">
+        Nossa Infraestrutura
+      </h3>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-        {galleryImages.map((image, index) => (
-          <div class="overflow-hidden rounded-lg shadow-lg">
-            <ImageWithFallback
-              src={image}
-              alt={`Infraestrutura Kavera Cross ${index + 1}`}
-              className="w-full h-40 sm:h-48 md:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
-            />
-          </div>
-        ))}
+        {
+          galleryImages.map((unidade, index) => (
+            <div class="overflow-hidden rounded-lg shadow-lg">
+              <ImageWithFallback
+                src={unidade}
+                alt={`Infraestrutura Kavera Cross ${index + 1}`}
+                className="w-full h-40 sm:h-48 md:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 md:mb-12">
+        <h3 class="text-2xl md:text-3xl text-black font-semibold mb-6 md:mb-8">
+          Nossas Unidades
+        </h3>
+      </div>
+
+      <div
+        class="grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-4 justify-center"
+      >
+        {
+          unidades.map((unidade, index) => (
+            <div class="flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="overflow-hidden">
+                <ImageWithFallback
+                  src={unidade.img.src}
+                  alt={`Infraestrutura Kavera Cross ${index + 1}`}
+                  className="w-full h-40 sm:h-48 md:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
+                />
+              </div>
+
+              <div class="p-4 sm:p-6 flex-grow">
+                <h4 class="text-lg md:text-xl font-bold text-blue-600 mb-2">
+                  {unidade.nome}
+                </h4>
+                <p class="text-sm sm:text-base text-gray-700">
+                  <a href={unidade.wppLink}>
+                    <MessageCircle className="w-5 h-5 inline-block text-green-500" />
+                    {unidade.whatsApp}
+                  </a>
+                </p>
+                <p class="text-sm sm:text-base text-gray-700">
+                  <a href={`https://www.instagram.com/${unidade.instagram}`}>
+                    <Instagram className="w-5 h-5 inline-block text-green-500" />
+                    {unidade.instagram}
+                  </a>
+                </p>
+                <p class="text-sm sm:text-base text-gray-700">
+                  <a href="">
+                    <Mail className="w-5 h-5 inline-block text-green-500" />
+                    {unidade.email}
+                  </a>
+                </p>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>

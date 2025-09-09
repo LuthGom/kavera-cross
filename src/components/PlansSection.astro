@@ -55,7 +55,7 @@ const plans = {
       name: "Trimestral",
       price: {
         vista: "R$ 270,00",
-        parcelado: "R$ 275,94 parcelado (3x)",
+        parcelado: "R$ 275,94 (3x de R$ 91,98",
       },
       period: "/mês",
       image:
@@ -67,7 +67,7 @@ const plans = {
       name: "Semestral",
       price: {
         vista: "R$ 480,00",
-        parcelado: "R$ 489,50 parcelado (6x)",
+        parcelado: "R$ 489,50  (6x de R$ 81,88",
       },
       period: "/mês",
       image:
@@ -79,8 +79,9 @@ const plans = {
       name: "Anual",
       price: {
         vista: "R$ 900,00",
-        parcelado: "R$ 921,09 parcelado (12x)",
+        parcelado: "R$ 921,09 (12x de R$ 76,75",
       },
+      period: "/mês",
       image:
         "https://images.unsplash.com/photo-1639511205270-2b1ce5b112c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcm9zc2ZpdCUyMHRyYWluaW5nfGVufDF8fHx8MTc1NjE2MjAzNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       features: ["Todos os dias 1x ao dia", "Zona de CrossFit"],
@@ -108,7 +109,7 @@ function CheckIcon() {
         objetivos fitness
       </p>
     </div>
-    
+
     <h2
       class="text-center md:text-3xl font-semibold text-blue-400 py-2 m-4 bg-black max-w-6xl mx-auto"
     >
@@ -182,17 +183,20 @@ function CheckIcon() {
               Matricule-se!
             </button>
           </div>
-        ))}
-      </div>
+        ))
+      }
+    </div>
 
-    <h2 class="text-center md:text-3xl font-semibold text-blue-400 py-2 m-4 bg-black max-w-6xl mx-auto">
+    <h2
+      class="text-center md:text-3xl font-semibold text-blue-400 py-2 m-4 bg-black max-w-6xl mx-auto"
+    >
       PACOTES
     </h2>
     <div
       class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
     >
       {
-        plans.mensais.map((plan, index) => (
+        plans.pacotes.map((plan, index) => (
           <div
             class={`bg-white rounded-lg shadow-md overflow-hidden ${
               plan.popular ? "ring-2 ring-blue-600" : ""
@@ -218,16 +222,15 @@ function CheckIcon() {
               </h3>
               <div class="flex items-end mb-4 sm:mb-6">
                 <span class="text-3xl sm:text-2xl text-black font-semibold">
-                  {plan.price.dinheiro}
+                  À Vista: {plan.price.vista}
                 </span>
-
-                <span class="text-gray-600 ml-1">{plan.period}</span>
               </div>
               <div class="flex items-end mb-4 sm:mb-6">
                 <span class="text-3xl sm:text-2xl text-black font-semibold">
-                  {plan.price.cartao}
-                </span>
+                  Parcelado: {plan.price.parcelado}
                 <span class="text-gray-600 ml-1"> {plan.period}</span>
+                )
+                </span>
               </div>
               <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                 {plan.features.map((feature, featureIndex) => (
@@ -255,7 +258,8 @@ function CheckIcon() {
               Matricule-se!
             </button>
           </div>
-        ))}
-      </div>
+        ))
+      }
+    </div>
   </div>
 </section>
