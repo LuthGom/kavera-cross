@@ -123,7 +123,7 @@ function getIcon(iconName: string) {
         }
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div id="unidades" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="text-center mb-8 md:mb-12">
         <h3 class="text-2xl md:text-3xl text-black font-semibold mb-6 md:mb-8">
           Nossas Unidades
@@ -161,7 +161,7 @@ function getIcon(iconName: string) {
                   </a>
                 </p>
                 <p class="text-sm sm:text-base text-gray-700">
-                  <a href="">
+                  <a href={`mailto:${unidade.email}`}>
                     <Mail className="w-5 h-5 inline-block text-green-500" />
                     {unidade.email}
                   </a>
