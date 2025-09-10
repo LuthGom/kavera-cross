@@ -3,6 +3,7 @@ import ImageWithFallback from "./ImageWithFallBack.astro";
 import parana from "../../public/assets/parana.jpeg";
 import catalao from "../../public/assets/catalao.jpeg";
 import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { union } from "astro:schema";
 // Definindo os diferenciais
 const differentials = [
   {
@@ -35,7 +36,6 @@ const galleryImages = [
   "https://images.unsplash.com/photo-1610456756490-0f7069c202d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxneW0lMjBlcXVpcG1lbnQlMjB3b3Jrb3V0fGVufDF8fHx8MTc1NjExMTQxNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   "https://images.unsplash.com/photo-1721394747060-7cfc57104f88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwY2VudGVyJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzU2MTYyMDM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   "https://images.unsplash.com/photo-1602827114685-efbb2717da9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZW9wbGUlMjB0cmFpbmluZyUyMGd5bSUyMGJsYWNrJTIwd2hpdGV8ZW58MXx8fHwxNzU2MTYyMDM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1639511205270-2b1ce5b112c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcm9zc2ZpdCUyMHRyYWluaW5nfGVufDF8fHx8MTc1NjE2MjAzNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
 ];
 
 const unidades = [
@@ -46,6 +46,15 @@ const unidades = [
     instagram: "kaveracross",
     email: "kaveramusculacao01@gmail.com",
     wppLink: "https://wa.link/97g5ou",
+    endereco: {
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3745.0716999241763!2d-44.91965492387908!3d-20.172739945915023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa0a4255d0c8a4f%3A0x6a9c5cc3608a604d!2sAv.%20Paran%C3%A1%2C%203401%20-%20Vila%20Belo%20Horizonte%2C%20Divin%C3%B3polis%20-%20MG%2C%2035501-170!5e0!3m2!1sen!2sbr!4v1757472790513!5m2!1sen!2sbr",
+      width: "300",
+      height: "225",
+      style: "border:0;",
+      allowfullscreen: "",
+      loading: "lazy",
+      referrerpolicy: "no-referrer-when-downgrade",
+    },
   },
   {
     img: catalao,
@@ -54,6 +63,15 @@ const unidades = [
     instagram: "kaveracrosscatalao",
     email: "kaveracatalao@gmail.com",
     wppLink: "https://wa.link/vo8cau",
+    endereco: {
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3745.546841269143!2d-44.90425952387977!3d-20.152944545291522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa0a5bc18d329f5%3A0xa76a3dec6d792354!2sR.%20Castro%20Alves%2C%20639%20-%20Planalto%2C%20Divin%C3%B3polis%20-%20MG%2C%2035501-205!5e0!3m2!1sen!2sbr!4v1757472286549!5m2!1sen!2sbr",
+      width: "300",
+      height: "225",
+      style: "border:0;",
+      allowfullscreen: "",
+      loading: "lazy",
+      referrerpolicy: "no-referrer-when-downgrade",
+    },
   },
 ];
 // Função para renderizar o ícone correto
@@ -106,10 +124,12 @@ function getIcon(iconName: string) {
 
     <!-- Galeria -->
     <div>
-      <h3 class="text-xl md:text-2xl text-black text-center mb-6 md:mb-8">
-        Nossa Infraestrutura
-      </h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+      <h2
+        class="text-center md:text-3xl font-semibold text-blue-400 py-2 m-4 bg-black max-w-7xl mx-auto"
+      >
+        NOSSA INFRAESTRUTURA
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         {
           galleryImages.map((unidade, index) => (
             <div class="overflow-hidden rounded-lg shadow-lg">
@@ -123,11 +143,13 @@ function getIcon(iconName: string) {
         }
       </div>
     </div>
-    <div id="unidades" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="text-center mb-8 md:mb-12">
-        <h3 class="text-2xl md:text-3xl text-black font-semibold mb-6 md:mb-8">
-          Nossas Unidades
-        </h3>
+    <div id="unidades" class="max-w-7xl mx-auto px-3 sm:px-6 mt-10 lg:px-8">
+      <div class="text-center md:mb-12">
+        <h2
+          class="text-center md:text-3xl font-semibold text-white py-2 mb-2 bg-black max-w-6xl mx-auto"
+        >
+          NOSSAS UNIDADES
+        </h2>
       </div>
 
       <div
@@ -166,6 +188,16 @@ function getIcon(iconName: string) {
                     {unidade.email}
                   </a>
                 </p>
+                <span>
+                  <iframe
+                    class="py-4"
+                    src={unidade.endereco.src}
+                    width={unidade.endereco.width}
+                    height={unidade.endereco.height}
+                    style={unidade.endereco.style}
+                    allowfullscreen={unidade.endereco.allowfullscreen}
+                  />
+                </span>
               </div>
             </div>
           ))
