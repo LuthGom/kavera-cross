@@ -1,44 +1,56 @@
 ---
 import Button from "./Button.astro";
-import ImageWithFallBack from "./ImageWithFallBack.astro"
+import ImageWithFallBack from "./ImageWithFallBack.astro";
 ---
-<section class="bg-gradient-to-r from-black to-gray-900 text-white">
-      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[500px] md:min-h-[600px] py-12 md:py-16">
-          {/* Texto */}
-          <div class="space-y-4 md:space-y-6 text-center lg:text-left">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
-              Aqui, seu treino é nossa{" "}
-              <span class="text-blue-500">prioridade</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-lg mx-auto lg:mx-0">
-              Na Kavera Cross, você encontra o ambiente perfeito para alcançar seus objetivos com equipamentos de última geração e profissionais qualificados.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-              <Button size="lg" class="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3">
-                Comece Agora
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                class="border-white text-white hover:bg-white hover:text-black px-6 sm:px-8 py-3"
-              >
-                Conheça os Planos
-              </Button>
-            </div>
-          </div>
 
-          {/* Imagem */}
-          <div class="flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <div class="relative">
-              <ImageWithFallBack
-                src="https://images.unsplash.com/photo-1717500250973-7c345a36a7ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHBob25lJTIwZ3ltJTIwZml0bmVzc3xlbnwxfHx8fDE3NTYxNjIwMzN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Mulher segurando celular na academia"
-                class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-300"
-              />
-              <div class="absolute inset-0 bg-blue-600 opacity-20 rounded-lg"></div>
-            </div>
-          </div>
+<section class="bg-gradient-to-r from-black to-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[500px] md:min-h-[600px] py-12 md:py-16"
+    >
+      {/* Texto */}
+      <div class="space-y-4 md:space-y-6 text-center lg:text-left">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+          Aqui, seu treino é nossa{" "}
+          <span class="text-blue-500">prioridade</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-lg mx-auto lg:mx-0">
+          Na Kavera Cross, você encontra o ambiente perfeito para alcançar seus
+          objetivos com equipamentos de última geração e profissionais
+          qualificados.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+        >
+          <a href="#unidades">
+            <Button
+              size="lg"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3"
+            >
+              Comece Agora
+            </Button>
+          </a>
+          <Button
+            variant="outline"
+            size="lg"
+            class="border-white text-white hover:bg-white hover:text-black px-6 sm:px-8 py-3"
+          >
+            Conheça os Planos
+          </Button>
         </div>
       </div>
-    </section>
+
+      {/* Imagem */}
+      <div class="flex justify-center lg:justify-end mt-8 lg:mt-0">
+        <div class="relative">
+          <ImageWithFallBack
+            src="https://images.unsplash.com/photo-1717500250973-7c345a36a7ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHBob25lJTIwZ3ltJTIwZml0bmVzc3xlbnwxfHx8fDE3NTYxNjIwMzN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="Mulher segurando celular na academia"
+            class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <div class="absolute inset-0 bg-blue-600 opacity-20 rounded-lg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
