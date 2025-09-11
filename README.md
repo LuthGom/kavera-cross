@@ -1,3 +1,16 @@
+## Este presente projeto foi construído no intuito de atender os requisitos de projeto de extensão do curso de Análises e Desenvolvimento de Sistemas da Faculdade Descomplica. O projeto foi realizado pelo Aluno Luciano Mendes Teixeira Gomes em parceria com a instituição Kavera Cross presente na cidade de Divinópólis, MG.
+
+###O projeto consistiu no desenvolvimento de um site institucional em Astro para a academia "Kavera Cross", promovendo um espaço virtual centralizado com identidade visual, planos, infraestrutura e contatos. O design moderno e dinâmico, elaborado via Figma com make AI, visa o marketing visual para engajamento e a facilidade na obtenção de informações. A arquitetura em Single Page garante dinamicidade de uso e escalabilidade para futuras funcionalidades, aumentando a independência do usuário.
+
+
+
+
+
+
+
+
+
+
 # Astro Starter Kit: Minimal
 
 ```sh
